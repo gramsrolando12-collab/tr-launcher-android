@@ -1,0 +1,52 @@
+name: Compilar APK de T.R Launcher
+
+# Se ejecuta a mano: pestaña «Actions» > «Compilar APK de T.R Launcher» > «Run workflow».
+# También se ejecuta solo cada vez que cambias algo en este repositorio.
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+env:
+  # Versión exacta del motor abierto (Zalith Launcher 2) sobre la que están hechos nuestros archivos.
+  MOTOR_URL: https://github.com/ZalithLauncher/ZalithLauncher2
+  MOTOR_COMMIT: d2b65457a1fb94641f2ca488b1af5265ccb4c552
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar este repositorio
+        uses: actions/checkout@v6
+
+      - name: Descargar el motor abierto y aplicar los archivos de T.R
+        run: |
+          git clone "$MOTOR_URL" motor
+          git -C motor checkout "$MOTOR_COMMIT"
+          cp -a overlay/. motor/
+          echo "Archivos de T.R aplicados: $(find overlay -type f | wc -l)"
+          grep -n "const val API_URL" motor/ZalithLauncher/src/main/java/com/movtery/zalithlauncher/tr/TrConfig.kt
+
+      - name: Instalar Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Preparar Gradle
+        uses: gradle/actions/setup-gradle@v5
+        with:
+          build-root-directory: motor
+          add-job-summary: on-failure
+
+      - name: Compilar el APK (arm64: casi todos los celulares)
+        working-directory: motor
+        run: |
+          chmod +x gradlew
+          ./gradlew ZalithLauncher:assembleDebug -Darch=arm64 --stacktrace
+
+      - name: Guardar el APK
+        uses: actions/upload-artifact@v7
+        with:
+          name: TR-Launcher-APK
+          path: motor/ZalithLauncher/build/outputs/apk/debug/*.apk
