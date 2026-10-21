@@ -1,0 +1,8 @@
+/* T.R Launcher · Android: oculta lo que solo existe en PC */
+#staffCard,#addMicrosoft,#openFolder,#localBox,.folderRow,#installDirBtn,#skinLocalNote{display:none!important}
+#settings .settingsGrid > .card:nth-child(2),
+#settings .settingsGrid > .card:nth-child(3),
+#settings .settingsGrid > .card:nth-child(4),
+#settings .settingsGrid > .card:nth-child(5),
+#settings .settingsGrid > .card:nth-child(6){display:none!important}
+label.slider:has(#ramMin){display:none}

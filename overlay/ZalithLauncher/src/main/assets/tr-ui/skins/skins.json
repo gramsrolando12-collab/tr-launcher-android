@@ -1,0 +1,146 @@
+[
+  {
+    "id": "explorador",
+    "name": "Explorador",
+    "category": "Clásicas",
+    "variant": "classic"
+  },
+  {
+    "id": "minero",
+    "name": "Minero",
+    "category": "Clásicas",
+    "variant": "classic"
+  },
+  {
+    "id": "aventurera",
+    "name": "Aventurera",
+    "category": "Clásicas",
+    "variant": "classic"
+  },
+  {
+    "id": "granjero",
+    "name": "Granjero",
+    "category": "Clásicas",
+    "variant": "classic"
+  },
+  {
+    "id": "constructor",
+    "name": "Constructor",
+    "category": "Clásicas",
+    "variant": "classic"
+  },
+  {
+    "id": "pescador",
+    "name": "Pescador",
+    "category": "Clásicas",
+    "variant": "classic"
+  },
+  {
+    "id": "rubia",
+    "name": "Costa",
+    "category": "Clásicas",
+    "variant": "classic"
+  },
+  {
+    "id": "capucha_azul",
+    "name": "Capucha azul",
+    "category": "Urbanas",
+    "variant": "classic"
+  },
+  {
+    "id": "capucha_roja",
+    "name": "Capucha roja",
+    "category": "Urbanas",
+    "variant": "classic"
+  },
+  {
+    "id": "capucha_verde",
+    "name": "Capucha verde",
+    "category": "Urbanas",
+    "variant": "classic"
+  },
+  {
+    "id": "capucha_morada",
+    "name": "Capucha morada",
+    "category": "Urbanas",
+    "variant": "classic"
+  },
+  {
+    "id": "skater",
+    "name": "Skater",
+    "category": "Urbanas",
+    "variant": "classic"
+  },
+  {
+    "id": "chaqueta_cuero",
+    "name": "Chaqueta de cuero",
+    "category": "Urbanas",
+    "variant": "classic"
+  },
+  {
+    "id": "deportista",
+    "name": "Deportista",
+    "category": "Urbanas",
+    "variant": "classic"
+  },
+  {
+    "id": "ninja",
+    "name": "Ninja",
+    "category": "Fantasía",
+    "variant": "classic"
+  },
+  {
+    "id": "robot",
+    "name": "Robot",
+    "category": "Fantasía",
+    "variant": "classic"
+  },
+  {
+    "id": "caballero",
+    "name": "Caballero",
+    "category": "Fantasía",
+    "variant": "classic"
+  },
+  {
+    "id": "mago",
+    "name": "Mago",
+    "category": "Fantasía",
+    "variant": "classic"
+  },
+  {
+    "id": "astronauta",
+    "name": "Astronauta",
+    "category": "Fantasía",
+    "variant": "classic"
+  },
+  {
+    "id": "fuego",
+    "name": "Espíritu de fuego",
+    "category": "Fantasía",
+    "variant": "classic"
+  },
+  {
+    "id": "hielo",
+    "name": "Espíritu de hielo",
+    "category": "Fantasía",
+    "variant": "classic"
+  },
+  {
+    "id": "zombi_amistoso",
+    "name": "Zombi amistoso",
+    "category": "Fantasía",
+    "variant": "classic"
+  },
+  {
+    "id": "pirata",
+    "name": "Pirata",
+    "category": "Fantasía",
+    "variant": "classic"
+  },
+  {
+    "id": "gato_noche",
+    "name": "Noche",
+    "category": "Fantasía",
+    "variant": "classic"
+  }
+]

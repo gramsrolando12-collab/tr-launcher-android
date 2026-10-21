@@ -1,0 +1,179 @@
+/* ==========================================================
+   T.R Launcher · versión TELÉFONO
+   Se carga DESPUÉS de style.css y sobrescribe lo de escritorio:
+   barra lateral -> barra inferior, columnas -> una sola columna,
+   botones más grandes para el dedo, ventanas como "hoja" inferior.
+   ========================================================== */
+:root{--tab-h:64px;--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px)}
+*{-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overscroll-behavior:none;background:#050824!important;-webkit-text-size-adjust:100%}
+body{height:100dvh;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+input,select,textarea{-webkit-user-select:text;user-select:text}
+
+/* ---- marco de la app: pantalla completa, sin esquinas ni barra de título ---- */
+#app{flex-direction:column;padding:var(--sat) 0 0;border:0;border-radius:0;box-shadow:none;height:100dvh}
+#titlebar{display:none!important}
+
+/* ---- barra inferior ---- */
+#tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;width:auto;height:calc(var(--tab-h) + var(--sab));padding:6px 6px var(--sab);border:0;border-top:1px solid var(--line-strong);
+  background:linear-gradient(180deg,rgba(14,22,84,.96),rgba(5,8,36,.99));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -6px 24px rgba(40,60,200,.28)}
+#tabbar nav{display:flex;gap:2px;height:100%}
+#tabbar .nav{flex:1;min-width:0;flex-direction:column;justify-content:center;align-items:center;gap:3px;padding:4px 2px;border-radius:14px;font-size:10.5px;text-align:center;transform:none!important}
+#tabbar .nav svg{width:22px;height:22px}
+#tabbar .nav span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#tabbar .nav.active{box-shadow:0 0 14px rgba(80,110,255,.55)}
+
+/* ---- contenido ---- */
+main{width:100%;padding:8px 14px calc(var(--tab-h) + var(--sab) + 18px);-webkit-overflow-scrolling:touch}
+header{gap:10px;margin-bottom:12px;min-height:46px}
+header h1{font-size:19px;line-height:1.2}
+header p{font-size:12px;margin-top:2px}
+#pageTitles{min-width:0;flex:1}
+.brandMini{display:none;align-items:center;gap:10px;min-width:0;flex:1}
+#pageTitles.hidden + .brandMini{display:flex}
+.brandMini img{width:40px;height:40px;border-radius:12px;box-shadow:0 0 14px rgba(80,255,170,.4);flex-shrink:0}
+.brandMini strong{display:block;font-size:16px}
+.brandMini .status{margin:0;padding:0;font-size:11px;color:var(--muted);display:flex}
+.chip{padding:4px 10px 4px 4px;gap:8px;max-width:46%;flex-shrink:0}
+.chip #chipName{max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}
+.chip canvas{width:32px;height:32px}
+
+/* ---- tarjetas, botones y campos (táctil) ---- */
+.card{padding:16px;margin-bottom:12px;border-radius:16px}
+button,.primary,.secondary,.danger{min-height:46px;touch-action:manipulation}
+.primary,.secondary,.danger{padding:12px 18px}
+.danger{margin-left:0;margin-top:8px}
+.card>.secondary,.card>.primary,.card>.danger{width:100%}
+.backBtn{min-height:40px;padding:8px 16px}
+input,select{font-size:16px;min-height:46px;padding:10px 14px}   /* 16px evita el zoom automático en iPhone */
+.check{min-height:44px}
+input[type=range]{height:8px;min-height:0;margin:10px 0}
+input[type=range]::-webkit-slider-thumb{width:28px;height:28px}
+.inline{flex-wrap:wrap}
+.inline input{min-width:120px}
+.note{font-size:12.5px}
+
+/* sin efectos "hover" en pantallas táctiles (se quedan pegados al tocar) */
+@media (hover:none){
+  .hoverable:hover,.nav:hover,.primary:hover,.secondary:hover,.danger:hover,.chip:hover,.chipBtn:hover,.skinItem:hover,.backBtn:hover,.vbtn:hover,.ghostPill:hover,.bigPlay:hover,.bannerBtn:hover,.serverCard:hover .serverImg,.accRow:hover{transform:none;box-shadow:inherit}
+  .primary:hover::after{transform:translateX(-130%)}
+  .nav:hover{background:transparent}
+  .nav.active:hover{background:linear-gradient(135deg,rgba(63,107,255,.6),rgba(139,77,255,.5))}
+  button:active{transform:scale(.97)}
+}
+
+/* ---- inicio ---- */
+.hero{height:calc(100dvh - var(--sat) - var(--tab-h) - var(--sab) - 86px);min-height:420px;max-height:none;border-radius:22px;padding:18px 16px;gap:14px;background-position:center 85%}
+.heroLogo{width:min(300px,78%)}
+.heroTag{font-size:clamp(17px,5.4vw,23px);letter-spacing:.5px}
+.bigPlay{font-size:23px;padding:15px 0;width:min(300px,86%);justify-content:center;gap:12px}
+.bigPlay svg{width:26px;height:26px}
+.ghostPill{padding:12px 20px;font-size:14px;width:min(300px,86%);justify-content:center;min-height:46px}
+.heroAcc{font-size:12px}
+.heroVer{right:12px;bottom:8px}
+
+/* ---- elegir versión ---- */
+.version{flex-wrap:wrap;gap:12px}
+.vIcon{width:50px;height:50px}
+.version .actions{flex:1 0 100%;justify-content:stretch}
+.version .actions button{flex:1}
+.logcard pre{max-height:160px}
+
+/* ---- Discord ---- */
+.bannerBtn{border-radius:18px}
+.joinCard{flex-direction:column;text-align:center;gap:12px}
+.joinText h3{font-size:18px}
+.joinCard .primary{width:100%}
+
+/* ---- skins: una columna, visor arriba, galería de 2-3 columnas ---- */
+.skinLayout{grid-template-columns:1fr;gap:12px;height:auto}
+#skins:not(.hidden){height:auto}
+.skinPreview{height:auto;overflow:visible;margin-bottom:0}
+.skinMain{height:auto;overflow:visible;padding:0}
+.viewer{width:min(220px,64vw)}
+.skinPreview canvas{width:100%;height:auto;aspect-ratio:240/330;touch-action:none}   /* arrastrar gira la skin y no hace scroll */
+.vbtn{width:42px;height:42px;min-height:42px}
+.viewerBtns{gap:10px}
+.toolbar{flex-wrap:wrap;gap:10px}
+.toolbar select{width:100%}
+.chips{flex-wrap:nowrap;overflow-x:auto;margin:0 -14px 12px;padding:2px 14px 6px;-webkit-overflow-scrolling:touch}
+.chips .chipBtn{flex-shrink:0;min-height:40px;white-space:nowrap}
+.skinGrid{grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+.skBody canvas{width:84px;height:128px}
+.skHead{font-size:12.5px}
+.heart,.skinDel{width:34px;height:34px;min-height:34px;font-size:16px}
+.skinDel{font-size:13px}
+.heart{bottom:2px;right:4px}
+
+/* ---- perfil ---- */
+.profileTop{flex-wrap:wrap;gap:14px}
+.profileTop canvas{width:76px;height:76px}
+.profileTop .who{flex:1 0 140px}
+.profileTop .pill{width:100%}
+.profileGrid,.settingsGrid{grid-template-columns:1fr;gap:12px}
+.wideCard{grid-column:auto}
+.skinMini{gap:14px}
+
+/* ---- ajustes ---- */
+.metrics{grid-template-columns:repeat(3,1fr);gap:8px}
+.metrics div{padding:10px}
+.metrics strong{font-size:17px}
+.metrics small{font-size:11px}
+.actionsRow{flex-direction:column;align-items:stretch}
+.actionsRow button{width:100%}
+
+/* ---- servidores ---- */
+.serverHead{flex-direction:column;align-items:stretch;gap:10px}
+.serverHead .pill{width:100%}
+.serverCard{flex-direction:column;gap:14px}
+.serverImg{width:100%;height:170px;border-radius:18px}
+.serverBody{width:100%}
+.serverTop h3{font-size:19px}
+.serverActions{flex-direction:column}
+.serverActions button{width:100%}
+.serverInfo{grid-template-columns:auto 1fr;font-size:12.5px;gap:4px 14px}
+.galNav{opacity:1;width:38px;height:38px;min-height:38px}
+.galThumbs{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.galThumb{min-height:0}
+
+/* ---- panel de comandos ---- */
+.panelOut{height:200px;font-size:12px}
+
+/* ---- ventanas emergentes: "hoja" que sube desde abajo ---- */
+.overlay{position:fixed;place-items:end center;padding:0;z-index:60}
+.modal{max-width:none;width:100%;max-height:92dvh;border-radius:24px 24px 0 0;padding:20px 16px calc(20px + var(--sab));animation:sheetUp .3s cubic-bezier(.2,.9,.3,1)}
+@keyframes sheetUp{from{transform:translateY(100%)}to{transform:none}}
+.installCard .primary{min-height:50px}
+.folderRow{flex-wrap:wrap}
+.folderRow .secondary{width:100%}
+.accRow{flex-wrap:wrap}
+.accRow .info{flex:1 0 120px}
+.accRow button{flex:1;min-height:42px}
+.modalHead .secondary{min-height:40px;padding:8px 14px}
+.askModal{max-width:none}
+.askModal .inline.end button{flex:1}
+
+/* ---- pantallas muy pequeñas (<360px) ---- */
+@media (max-width:359px){
+  #tabbar .nav{font-size:9.5px}
+  .heroTag{font-size:16px}
+  .skinGrid{grid-template-columns:repeat(2,1fr)}
+}
+/* ---- teléfono en horizontal: hero más bajo, galería en 3 columnas ---- */
+@media (orientation:landscape) and (max-height:480px){
+  :root{--tab-h:52px}
+  #tabbar .nav{flex-direction:row;gap:6px;font-size:12px}
+  #tabbar .nav svg{width:18px;height:18px}
+  .hero{min-height:300px;height:auto;padding:22px 16px}
+  .heroLogo{width:min(220px,40%)}
+  .skinGrid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+  .serverImg{height:130px}
+}
+/* ---- tablet vertical: dos columnas donde cabe ---- */
+@media (min-width:700px){
+  .profileGrid,.settingsGrid{grid-template-columns:1fr 1fr}
+  .wideCard{grid-column:1/3}
+  .skinGrid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+  .modal{max-width:520px;border-radius:24px;margin-bottom:24px}
+  .overlay{place-items:center}
+}

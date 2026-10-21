@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icono de T.R Launcher: el logo T.R centrado dentro de la zona segura del icono adaptable -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/tr_logo"
+    android:inset="17%" />
