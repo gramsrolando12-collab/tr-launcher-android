@@ -39,7 +39,8 @@ jobs:
           build-root-directory: motor
           add-job-summary: on-failure
 
-      - name: Compilar el APK (arm64: casi todos los celulares)
+      - name: Compilar el APK (arm64 - casi todos los celulares)
+
         working-directory: motor
         run: |
           chmod +x gradlew
